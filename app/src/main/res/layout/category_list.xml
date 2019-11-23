@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="category"
+            type="com.example.shoppingapp.data.models.Categories" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
-        android:layout_marginTop="45dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_marginTop="45dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
@@ -16,6 +21,19 @@
             app:civ_border_color="@color/colorSurface"
             app:civ_border_width="5dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:loadImageFromURI="@{category.photo_uri}"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/myriadpro"
+            android:text="@{category.type, default = `name`}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+            app:layout_constraintStart_toStartOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
