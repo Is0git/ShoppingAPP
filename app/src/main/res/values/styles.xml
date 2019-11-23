@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:colorBackground">#f6f5ee</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="MainCard">
+        <item name="shapeAppearanceOverlay">@style/CardRadiusOnlyBottom</item>
+    </style>
+
+    <style name="CardRadiusOnlyBottom" parent="">
+        <item name="cornerSizeBottomLeft">50dp</item>
+        <item name="cornerSizeBottomRight">50dp</item>
+    </style>
+</resources>
