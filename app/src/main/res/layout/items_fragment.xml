@@ -9,6 +9,7 @@
 
         <com.google.android.material.card.MaterialCardView
             style="@style/MainCard"
+            android:id="@+id/mainCard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -17,12 +18,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/itemRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_gravity="center_horizontal"
-                tools:listitem="@layout/category_list"
-                android:layout_marginTop="40dp"
+                tools:listitem="@layout/items_list"
                 android:orientation="vertical"
+                android:layout_marginTop="40dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="3"
+                app:spanCount="2"
                 android:layout_height="match_parent"/>
         </com.google.android.material.card.MaterialCardView>
 

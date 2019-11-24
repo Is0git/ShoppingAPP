@@ -13,12 +13,12 @@ interface ShoppingDao {
     @Query("SELECT * FROM item_table")
     fun getData() : LiveData<List<Item>>
 
-    @Query("SELECT * FROM item_table WHERE type == :type")
-    fun getCertainType(type: String) : LiveData<List<Item>>
+    @Query("SELECT * FROM item_table WHERE typeId == :type")
+    fun getCertainType(type: Int) : LiveData<List<Item>>
 
     @Insert
     suspend fun insertItem(item: Item)
 
-    @Query("SELECT * FROM my_items, item_table INNER JOIN my_items ON my_items.item_id = item_table.id")
+    @Query("SELECT * FROM my_items INNER JOIN item_table ON my_items.item_id = item_table.id")
     fun getMyItems() : LiveData<List<FlattenItem>>
 }

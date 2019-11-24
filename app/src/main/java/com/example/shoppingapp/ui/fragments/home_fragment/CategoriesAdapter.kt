@@ -10,12 +10,14 @@ import javax.inject.Inject
 
 @HomeFragmentScope
 class CategoriesAdapter @Inject constructor(): ListAdapter<Categories, CategoriesAdapter.MyViewHolder>(asyncDiffer) {
+    lateinit var listener: OnCategoryListener
     class MyViewHolder(val binding: CategoryListBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = CategoryListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CategoryListBinding.inflate(LayoutInflater.from(parent.context), parent, false).also { it.clickListener = listener }
+
         return MyViewHolder(binding)
     }
 

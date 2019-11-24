@@ -27,7 +27,6 @@ import java.io.IOException
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@RunWith(AndroidJUnit4::class)
 @MediumTest
 class ExampleInstrumentedTest {
     lateinit var database: ShoppingDatabase
@@ -48,21 +47,8 @@ class ExampleInstrumentedTest {
 
     @Test
     @Throws(Exception::class)
-    suspend fun addUser() {
-        val job = CoroutineScope(Dispatchers.IO).launch {
-            shoppingDao.insertItem(
-                Item(
-                    "test",
-                    "hoodie",
-                    "12,4",
-                    "drawable::packageName/R.id.drawable",
-                    1
-                )
-            )
-        }
-        job.join()
-        val getItem = withContext(Dispatchers.IO) {shoppingDao.getData()}
-        assertThat(getItem.value?.get(0)?.type, equalTo("hoodie"))
+    fun addUser() {
+
     }
 
 }

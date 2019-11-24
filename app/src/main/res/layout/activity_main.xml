@@ -21,7 +21,9 @@
                 app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:navGraph="@navigation/main_nav" />
+                app:layout_constraintVertical_bias="0.0"
+                app:navGraph="@navigation/main_nav"
+                tools:layout_editor_absoluteX="0dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/cartText"
@@ -91,16 +93,17 @@
             android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="@color/colorSurface"
             android:visibility="visible"
-            app:elevation="0dp"
+            app:elevation="10dp"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:elevation="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:layout_collapseMode="pin" />
         </com.google.android.material.appbar.AppBarLayout>
 

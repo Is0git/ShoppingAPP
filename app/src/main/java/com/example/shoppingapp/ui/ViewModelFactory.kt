@@ -2,6 +2,7 @@ package com.example.shoppingapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.shoppingapp.di.activity.ActivityScope
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -13,7 +14,7 @@ class ViewModelFactory
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val creator = creators[modelClass] ?: creators.entries.firstOrNull {
             modelClass.isAssignableFrom(it.key)
-        }?.value ?: throw IllegalArgumentException("unknown model class $modelClass")
+        }?.value ?: throw IllegalArgumentException("unknown model class $modelClass") as Throwable
         try {
             @Suppress("UNCHECKED_CAST")
             return creator.get() as T

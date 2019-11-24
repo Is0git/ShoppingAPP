@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.shoppingapp.ui.fragments.home_fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_itemsFragment"
+            app:destination="@id/itemsFragment">
+            <argument
+                android:name="typeID"
+                app:argType="integer"
+               />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.example.shoppingapp.ui.fragments.items_fragment.ItemsFragment"
+        android:label="ItemsFragment">
+        <argument
+            android:name="typeID"
+            app:argType="integer" />
+
+    </fragment>
 </navigation>

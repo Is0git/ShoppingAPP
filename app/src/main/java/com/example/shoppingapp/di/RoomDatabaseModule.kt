@@ -14,6 +14,6 @@ object RoomDatabaseModule {
     @JvmStatic
     @Provides
     @Singleton
-    fun getDatabase(application: Application) : RoomDatabase = Room.databaseBuilder(application, ShoppingDatabase::class.java, "shopping_database").fallbackToDestructiveMigration().build()
+    fun getDatabase(application: Application) : ShoppingDatabase = Room.databaseBuilder(application, ShoppingDatabase::class.java, "shopping_database").fallbackToDestructiveMigration().build()
 
 }

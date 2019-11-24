@@ -6,8 +6,8 @@ import com.example.shoppingapp.data.dao.ShoppingDao
 import com.example.shoppingapp.data.entities.Item
 import com.example.shoppingapp.data.entities.MyItems
 
-@Database(entities = [MyItems::class, Item::class], version = 1, exportSchema = false)
+@Database(entities = [MyItems::class, Item::class], exportSchema = false, version = 4)
 abstract class ShoppingDatabase : RoomDatabase() {
 
-    abstract fun ShoppingDao() : ShoppingDao
+    abstract fun shoppingDao() : ShoppingDao
 }

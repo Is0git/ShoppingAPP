@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey
 data class Item(
     val title: String?,
     val type: String?,
+    val typeId: Int?,
     val price: String?,
-    val imageUri: String?, @PrimaryKey(autoGenerate = true) val id: Int
+    val imageUri: String?,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0
 ) {
 }
