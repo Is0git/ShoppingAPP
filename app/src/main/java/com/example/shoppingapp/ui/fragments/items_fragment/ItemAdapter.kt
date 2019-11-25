@@ -1,5 +1,7 @@
 package com.example.shoppingapp.ui.fragments.items_fragment
 
+import android.content.ClipData
+import android.content.ClipDescription
 import android.os.Build
 import android.util.DisplayMetrics
 import android.util.Log
@@ -21,7 +23,7 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.MyViewHolder {
         val binding = ItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return MyViewHolder(binding, currentList)
     }
 
     override fun onBindViewHolder(holder: ItemAdapter.MyViewHolder, position: Int) {
@@ -29,8 +31,9 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
     }
 
 
-    class MyViewHolder(val binding: ItemsListBinding) : RecyclerView.ViewHolder(binding.root),
+    class MyViewHolder(val binding: ItemsListBinding, val items: List<Item>) : RecyclerView.ViewHolder(binding.root),
         View.OnTouchListener, GestureDetector.OnGestureListener, View.OnDragListener {
+
         val metrics = DisplayMetrics()
         val gestureDetector = GestureDetector(binding.root.context, this)
 
@@ -41,6 +44,7 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
         override fun onTouch(v: View?, event: MotionEvent?): Boolean {
             if (v?.id == R.id.mainCard) {
                 Log.d("ItemAdapter", "TOUCH")
+
                 gestureDetector.onTouchEvent(event)
                 return true
             }
@@ -82,14 +86,14 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
         }
 
         override fun onLongPress(e: MotionEvent?) {
-            Log.d("ItemAdapter", "LONG PRESS")
+            val item = if(adapterPosition > 0) items[adapterPosition] else items[0]
             val builder = SmallerDragShadow(binding.itemImage)
-
-
+            val clipDataItem = ClipData.Item(item.id.toString() )
+            val clipdata = ClipData("itemID", arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN), clipDataItem )
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                binding.mainCard.startDragAndDrop(null, builder, null, 0)
+                binding.mainCard.startDragAndDrop(clipdata, builder, null, 0)
             } else {
-                binding.mainCard.startDrag(null, builder, null, 0)
+                binding.mainCard.startDrag(clipdata, builder, null, 0)
             }
             builder.view.setOnDragListener(this)
         }
@@ -116,7 +120,7 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
                     true
                 }
                 DragEvent.ACTION_DROP -> {
-                    Log.d("ItemAdapter", "DROP")
+                    Log.d("ItemAdapter", "DROP2: ${v?.id}")
                     true
                 }
                 else -> {

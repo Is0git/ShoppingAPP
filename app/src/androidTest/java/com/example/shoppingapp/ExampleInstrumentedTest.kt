@@ -36,7 +36,7 @@ class ExampleInstrumentedTest {
     fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         database = Room.inMemoryDatabaseBuilder(context, ShoppingDatabase::class.java).build()
-        shoppingDao = database.ShoppingDao()
+        shoppingDao = database.shoppingDao()
     }
 
     @After

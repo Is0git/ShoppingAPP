@@ -1,12 +1,20 @@
 package com.example.shoppingapp.ui
 
+import androidx.lifecycle.LiveData
 import com.example.shoppingapp.data.database.ShoppingDatabase
+import com.example.shoppingapp.data.entities.FlattenItem
 import com.example.shoppingapp.data.entities.Item
+import com.example.shoppingapp.data.entities.MyItems
 import com.example.shoppingapp.di.activity.ActivityScope
 import javax.inject.Inject
 
 @ActivityScope
 class MainActivityRepository @Inject constructor(val database: ShoppingDatabase) {
+
+
+    fun getMyItems() = database.shoppingDao().getMyItems()
+
+   suspend fun addMyItem(id: String) = database.shoppingDao().myItem(MyItems(id.toInt()))
 
     suspend fun addMocks() {
         database.shoppingDao().insertItem(

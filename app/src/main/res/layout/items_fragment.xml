@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 tools:listitem="@layout/items_list"
                 android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"

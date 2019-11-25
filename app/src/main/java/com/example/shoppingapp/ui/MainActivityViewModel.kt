@@ -9,5 +9,10 @@ import javax.inject.Inject
 @ActivityScope
 class MainActivityViewModel @Inject constructor(val repo: MainActivityRepository) : ViewModel() {
 
+    var myItems = repo.getMyItems()
+
+    fun addMyItem(id: String) = viewModelScope.launch {
+        repo.addMyItem(id)
+    }
 
 }
