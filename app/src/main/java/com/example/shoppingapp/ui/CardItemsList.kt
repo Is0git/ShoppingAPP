@@ -15,12 +15,13 @@ import javax.inject.Inject
 
 @ActivityScope
 class CardItemsList @Inject constructor() : ListAdapter<FlattenItem, CardItemsList.MyViewHolder>(asyncDifferConfig) {
+    lateinit var listener:MainActivityListener
     class MyViewHolder(val binding: CartItemsListBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = CartItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CartItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false).also { it.listener = listener }
         return MyViewHolder(binding)
 
     }

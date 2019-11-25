@@ -1,6 +1,5 @@
 package com.example.shoppingapp.ui
 
-import androidx.lifecycle.LiveData
 import com.example.shoppingapp.data.database.ShoppingDatabase
 import com.example.shoppingapp.data.entities.FlattenItem
 import com.example.shoppingapp.data.entities.Item
@@ -11,191 +10,198 @@ import javax.inject.Inject
 @ActivityScope
 class MainActivityRepository @Inject constructor(val database: ShoppingDatabase) {
 
+    private val dao = database.shoppingDao()
 
     fun getMyItems() = database.shoppingDao().getMyItems()
 
-   suspend fun addMyItem(id: String) = database.shoppingDao().myItem(MyItems(id.toInt()))
+    suspend fun addMyItem(id: String) = dao.myItem(MyItems(id.toInt()))
+
+    suspend fun deleteItem(item:FlattenItem) = dao.deleteItem(item.item_id)
+
+
+    suspend fun deleteAll() = dao.deleteItems()
+
 
     suspend fun addMocks() {
         database.shoppingDao().insertItem(
             Item(
+                "Red Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$55",
+                55.00,
                 "android.resource://com.example.shoppingapp/drawable/hoodie10"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Blue Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$40",
+                40.00,
                 "android.resource://com.example.shoppingapp/drawable/hoodie11"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Pink Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$30",
+                30.00,
                 "android.resource://com.example.shoppingapp/drawable/hoodie12"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Grey Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$20",
+                20.0,
                 "android.resource://com.example.shoppingapp/drawable/hoodie2"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Brown Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$10",
+                10.0,
                 "android.resource://com.example.shoppingapp/drawable/hoodie3"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Coral Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$40",
+                40.00,
                 "android.resource://com.example.shoppingapp/drawable/hoodie4"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Crimson Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$70",
+                70.05,
                 "android.resource://com.example.shoppingapp/drawable/hoodie5"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Black Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$50",
+                50.00,
                 "android.resource://com.example.shoppingapp/drawable/hoodie6"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "SkyBlue Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$60",
+                60.0,
                 "android.resource://com.example.shoppingapp/drawable/hoodie7"
             )
         )
         database.shoppingDao().insertItem(
             Item(
+                "Salmon Hoodie with N attribute",
                 "Hoodie",
-                "Coats",
                 1,
-                "$40",
+                40.0,
                 "android.resource://com.example.shoppingapp/drawable/hoodie9"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Coat",
+                " Dark Coat with N attribute",
                 "Coats",
                 2,
-                "$50",
+                50.0,
                 "android.resource://com.example.shoppingapp/drawable/coat2"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Coat",
+                "Red Coat with N attribute",
                 "Coats",
                 2,
-                "$80",
+                80.00,
                 "android.resource://com.example.shoppingapp/drawable/coat5"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Coat",
+                "Blue Coat with N attribute",
                 "Coats",
                 2,
-                "$110",
+                110.69,
                 "android.resource://com.example.shoppingapp/drawable/coat3"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Coat",
+                "Grey Coat with N attribute",
                 "Coats",
                 2,
-                "$120",
+                120.10,
                 "android.resource://com.example.shoppingapp/drawable/coat4"
             )
         )
 
         database.shoppingDao().insertItem(
             Item(
-                "Dress pants",
+                "Grey Dress Pants with N attribute",
                 "Dress pants",
                 3,
-                "$72",
+                72.99,
                 "android.resource://com.example.shoppingapp/drawable/dress_pants2"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Dress pants",
+                "Black Dress Pants with N attribute",
                 "Dress pants",
                 3,
-                "$66",
+                66.19,
                 "android.resource://com.example.shoppingapp/drawable/dress_pants3"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Dress pants",
+                "Red Dress Pants with N attribute",
                 "Dress pants",
                 3,
-                "$55",
+                55.19,
                 "android.resource://com.example.shoppingapp/drawable/dress_pants4"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Dress pants",
+                "Green Dress Pants with N attribute",
                 "Dress pants",
                 3,
-                "$50",
+                19.19,
                 "android.resource://com.example.shoppingapp/drawable/dress_pants5"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Jacket",
+                "Grey Jacket with N attribute",
                 "Jackets",
                 4,
-                "$70",
+                12.13,
                 "android.resource://com.example.shoppingapp/drawable/jacket2"
             )
         )
 
         database.shoppingDao().insertItem(
             Item(
-                "Jacket",
+                "Grey Jacket with N attribute",
                 "Jackets",
                 4,
-                "$50",
+                50.00,
                 "android.resource://com.example.shoppingapp/drawable/jacket3"
             )
         )
@@ -203,123 +209,123 @@ class MainActivityRepository @Inject constructor(val database: ShoppingDatabase)
 
         database.shoppingDao().insertItem(
             Item(
-                "Jacket",
+                "Grey Jacket with N attribute",
                 "Jackets",
                 4,
-                "$60",
+                60.12,
                 "android.resource://com.example.shoppingapp/drawable/jacket5"
             )
         )
 
         database.shoppingDao().insertItem(
             Item(
-                "Jacket",
+                "Grey Jacket with N attribute",
                 "Jackets",
                 4,
-                "$70",
+                70.45,
                 "android.resource://com.example.shoppingapp/drawable/jacket6"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Jeans",
+                "Grey Jeans with N attribute",
                 "Jeans",
                 5,
-                "$70",
+                70.19,
                 "android.resource://com.example.shoppingapp/drawable/jeans2"
             )
         )
 
         database.shoppingDao().insertItem(
             Item(
-                "Jeans",
+                "Grey Jeans with N attribute",
                 "Jeans",
                 5,
-                "$100",
+                100.12,
                 "android.resource://com.example.shoppingapp/drawable/jeans4"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Jeans",
+                "Grey Jeans with N attribute",
                 "Jeans",
                 5,
-                "$90",
+                90.00,
                 "android.resource://com.example.shoppingapp/drawable/jeans5"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Jeans",
+                "Grey Jeans with N attribute",
                 "Jeans",
                 5,
-                "$60",
+                65.55,
                 "android.resource://com.example.shoppingapp/drawable/jeans6"
             )
         )
         database.shoppingDao().insertItem(
             Item(
-                "Jeans",
+                "Grey Jeans with N attribute",
                 "Jeans",
                 5,
-                "$50",
+                40.48,
                 "android.resource://com.example.shoppingapp/drawable/jeans7"
             )
         )
-//        database.shoppingDao().insertItem(
-//            Item(
-//                "Long sleeve jerseys",
-//                "Long Sleeve jerseys",
-//                6,
-//                "$50",
-//                "android.resource://com.example.shoppingapp/drawable/long_sleeve_jersey"
-//            )
-//        )
-//        database.shoppingDao().insertItem(
-//            Item(
-//                "Long sleeve top",
-//                "Long sleeves top",
-//                7,
-//                "$40.50",
-//                "android.resource://com.example.shoppingapp/drawable/long_sleeve_top"
-//            )
-//        )
-//        database.shoppingDao().insertItem(
-//            Item(
-//                "Shorts",
-//                "Shorts",
-//                8,
-//                "$15.99",
-//                "android.resource://com.example.shoppingapp/drawable/shorts"
-//            )
-//        )
-//        database.shoppingDao().insertItem(
-//            Item(
-//                "Sweater",
-//                "Sweaters",
-//                9,
-//                "$59.99",
-//                "android.resource://com.example.shoppingapp/drawable/sweather"
-//            )
-//        )
-//        database.shoppingDao().insertItem(
-//            Item(
-//                "Tank top",
-//                "Tank tops",
-//                10,
-//                "$10.16",
-//                "android.resource://com.example.shoppingapp/drawable/tank_top"
-//            )
-//        )
-//        database.shoppingDao().insertItem(
-//            Item(
-//                "Vest",
-//                "Vests",
-//                11,
-//                "$31.56",
-//                "android.resource://com.example.shoppingapp/drawable/vest"
-//            )
-//        )
+        database.shoppingDao().insertItem(
+            Item(
+                "Jersey with n attribute",
+                "Long Sleeve jerseys",
+                6,
+                48.48,
+                "android.resource://com.example.shoppingapp/drawable/long_sleeve_jersey"
+            )
+        )
+        database.shoppingDao().insertItem(
+            Item(
+                "Top with n attribute",
+                "Long sleeves top",
+                7,
+                49.49,
+                "android.resource://com.example.shoppingapp/drawable/long_sleeve_top"
+            )
+        )
+        database.shoppingDao().insertItem(
+            Item(
+                "Shorts with n attribute",
+                "Shorts",
+                8,
+                15.99,
+                "android.resource://com.example.shoppingapp/drawable/shorts"
+            )
+        )
+        database.shoppingDao().insertItem(
+            Item(
+                "Just a sweater",
+                "Sweaters",
+                9,
+                59.59,
+                "android.resource://com.example.shoppingapp/drawable/sweather"
+            )
+        )
+        database.shoppingDao().insertItem(
+            Item(
+                "Tank top",
+                "Tank tops",
+                10,
+                10.16,
+                "android.resource://com.example.shoppingapp/drawable/tank_top"
+            )
+        )
+        database.shoppingDao().insertItem(
+            Item(
+                "Vests in 2019 XD",
+                "Vests",
+                11,
+                31.56,
+                "android.resource://com.example.shoppingapp/drawable/vest"
+            )
+        )
     }
 
 }

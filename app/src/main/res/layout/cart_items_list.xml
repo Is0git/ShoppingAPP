@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+        <import type="com.example.shoppingapp.util.databinding.PricePlaceHolder"/>
+        <variable
+            name="listener"
+            type="com.example.shoppingapp.ui.MainActivityListener" />
         <variable
             name="item"
             type="com.example.shoppingapp.data.entities.FlattenItem" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        tools:background="@color/colorPrimary">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
             android:src="@color/colorSurface"
-            app:loadImageFromStringURI="@{item.imageUri}"
+            app:civ_border_color="@color/colorSurface"
+            app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImageFromStringURI="@{item.imageUri}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleTextView"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{item.title, default = `TITLE`}"
+            android:textColor="@color/colorSurface"
+            app:layout_constraintStart_toEndOf="@id/circleImageView"
+            app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/typeTextView"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{item.type, default = `TYPE`}"
+            android:textColor="@color/colorSurface"
+            app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+            app:layout_constraintStart_toEndOf="@id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/priceText"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:singleLine="true"
+            android:text="@{PricePlaceHolder.getPriceString(priceText, item.price)}"
+            android:textColor="@color/colorOnSurface"
+            app:layout_constraintBottom_toBottomOf="@+id/typeTextView"
+            app:layout_constraintStart_toEndOf="@id/typeTextView"
+            app:layout_constraintTop_toTopOf="@+id/titleTextView" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/cancel"
+            android:onClick="@{() -> listener.deleteItemOnClick(item)}"
+            app:layout_constraintBottom_toBottomOf="@+id/priceText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceText"
+            app:layout_constraintTop_toTopOf="@+id/priceText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

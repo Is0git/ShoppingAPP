@@ -112,7 +112,6 @@ class HomeFragment : DaggerFragment(), OnCategoryListener {
             )
         )
     }
-
     override fun onCategoryClick(typeID: Int) {
         val direction = HomeFragmentDirections.actionHomeFragmentToItemsFragment(typeID)
         navController.navigate(direction)

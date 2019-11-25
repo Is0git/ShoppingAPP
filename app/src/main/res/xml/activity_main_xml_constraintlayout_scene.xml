@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <KeyFrameSet>
+            <KeyCycle
+                android:alpha="1"
+                motion:framePosition="0"
+                motion:motionTarget="@+id/circleImageView"
+                motion:waveOffset="1"
+                motion:wavePeriod="1" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="0"
+                motion:motionTarget="@+id/gradient" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="91"
+                motion:motionTarget="@+id/gradient" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/gradient" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="0"
+                motion:motionTarget="@+id/itemsSum" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/itemsSum" />
+            <KeyAttribute
+                android:alpha="0.8"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/itemsSum" />
+        </KeyFrameSet>
+        <OnClick motion:targetId="@id/circleImageView" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint
+            android:id="@+id/main_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toTopOf="@+id/guideline2"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.0" />
+        <Constraint
+            android:id="@+id/circleImageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="24dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/guideline2"
+            motion:layout_constraintVertical_bias="0.5" />
+        <Constraint
+            android:id="@+id/cartText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/guideline2">
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customDimension="8sp" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/purchaseBUTTTON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:visibility="invisible"
+            motion:layout_constraintStart_toStartOf="@+id/gradient"
+            motion:layout_constraintTop_toBottomOf="parent"/>
+        <Constraint
+            android:id="@+id/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/cart_gradient"
+            motion:layout_constraintBottom_toBottomOf="@id/cardItemsList"
+            motion:layout_constraintTop_toTopOf="@id/cardItemsList" />
+        <Constraint
+            android:id="@+id/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/cart_gradient"
+            motion:layout_constraintBottom_toBottomOf="@id/cardItemsList"
+            motion:layout_constraintTop_toTopOf="@id/cardItemsList" />
+
+        <Constraint
+            android:id="@+id/itemsSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="83dp"
+            motion:layout_constraintStart_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint                android:id="@+id/cardItemsList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@+id/circleImageView"
+            motion:layout_constraintStart_toEndOf="@id/cartText"
+            motion:layout_constraintTop_toBottomOf="@+id/main_fragment_container"
+            android:layout_marginBottom="16dp"
+            android:elevation="10dp" />
+        <Constraint
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/purchaseBUTTTON"
+            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/main_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toTopOf="parent"
+            motion:layout_editor_absoluteY="639dp" />
+        <Constraint
+            android:id="@+id/circleImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="24dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/guideline2"
+            motion:layout_constraintVertical_bias="0.5" />
+        <Constraint
+            android:id="@+id/cardItemsList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            motion:layout_constraintBottom_toTopOf="@id/guideline2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/cartText" />
+        <Constraint
+            android:id="@+id/cartText"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="80dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/main_fragment_container">
+            <CustomAttribute
+                motion:attributeName="textSize"
+                motion:customDimension="16sp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/cart_gradient"
+            motion:layout_constraintBottom_toBottomOf="@id/cardItemsList"
+            motion:layout_constraintTop_toTopOf="@id/cardItemsList" />
+        <Constraint
+            android:id="@+id/itemsSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/cartText"
+            motion:layout_constraintEnd_toEndOf="@+id/cardItemsList"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintStart_toEndOf="@+id/cartText"
+            motion:layout_constraintTop_toTopOf="@+id/cartText"
+            motion:layout_constraintVertical_bias="1.0" />
+        <Constraint
+            android:id="@+id/purchaseBUTTTON"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="@+id/gradient"
+            motion:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+        <Constraint
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toTopOf="@id/purchaseBUTTTON"
+            motion:layout_constraintBottom_toBottomOf="@id/purchaseBUTTTON"
+            motion:layout_constraintStart_toEndOf="@id/purchaseBUTTTON"
+            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </ConstraintSet>
+</MotionScene>

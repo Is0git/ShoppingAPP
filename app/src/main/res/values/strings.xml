@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ShoppingApp</string>
     <string name="cart">Cart</string>
+    <string name="price">$%1$.2f</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.shoppingapp.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.shoppingapp.data.entities.FlattenItem
@@ -25,4 +26,10 @@ interface ShoppingDao {
 
     @Query("SELECT * FROM my_items INNER JOIN item_table ON my_items.item_id = item_table.id")
     fun getMyItems() : LiveData<List<FlattenItem>>
+
+    @Query("DELETE FROM my_items")
+    suspend fun deleteItems()
+
+    @Query("DELETE FROM MY_ITEMS WHERE item_id == :id")
+    suspend fun deleteItem(id: Int)
 }

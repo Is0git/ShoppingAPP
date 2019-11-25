@@ -10,11 +10,11 @@
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_itemsFragment"
-            app:destination="@id/itemsFragment">
+            app:destination="@id/itemsFragment"
+            app:enterAnim="@anim/enter_anim">
             <argument
                 android:name="typeID"
-                app:argType="integer"
-               />
+                app:argType="integer" />
         </action>
     </fragment>
     <fragment

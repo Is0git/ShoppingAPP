@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+        <import type="com.example.shoppingapp.util.databinding.PricePlaceHolder"/>
         <variable
             name="item"
             type="com.example.shoppingapp.data.entities.Item" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
@@ -35,10 +38,10 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="24dp"
-                    app:loadImageFromStringURI="@{item.imageUri}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:loadImageFromStringURI="@{item.imageUri}" />
 
                 <TextView
                     android:id="@+id/priceText"
@@ -46,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/myriadpro"
-                    android:text="@{item.price}"
+                    android:text="@{PricePlaceHolder.getPriceString(priceText, item.price)}"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                     app:layout_constraintEnd_toEndOf="@+id/itemImage"
                     app:layout_constraintStart_toStartOf="@+id/itemImage"
@@ -60,12 +63,26 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="80dp"
                     android:fontFamily="@font/myriadpro"
-                    android:text="@{item.title}"
+                    android:text="@{item.type}"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/priceText"
                     app:layout_constraintStart_toStartOf="@+id/priceText"
                     app:layout_constraintTop_toBottomOf="@+id/priceText" />
+
+                <TextView
+                    android:id="@+id/itemDesc"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/myriadpro"
+                    android:text="@{item.title}"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/itemName"
+                    app:layout_constraintStart_toStartOf="@+id/itemName"
+                    app:layout_constraintTop_toBottomOf="@+id/itemName" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

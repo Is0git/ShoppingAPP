@@ -2,28 +2,51 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <data>
+        <variable
+            name="vwmdl"
+            type="com.example.shoppingapp.ui.MainActivityViewModel" />
+    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene">
 
             <fragment
                 android:id="@+id/main_fragment_container"
                 android:name="androidx.navigation.fragment.NavHostFragment"
+                app:defaultNavHost="true"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 app:navGraph="@navigation/main_nav"
                 tools:layout_editor_absoluteX="0dp" />
+            <View
+                android:id="@+id/gradient"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:elevation="2dp"
+                android:background="@drawable/cart_gradient"
+                app:layout_constraintTop_toTopOf="@id/cardItemsList"
+                app:layout_constraintBottom_toBottomOf="@id/cardItemsList"/>
+
+            <View android:id="@+id/dragView"
+                android:layout_width="0dp"
+                android:elevation="2dp"
+                app:layout_constraintTop_toBottomOf="@id/guideline2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="0dp"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/cartText"
@@ -41,23 +64,24 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cardItemsList"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/circleImageView"
                 app:layout_constraintStart_toEndOf="@id/cartText"
                 app:layout_constraintTop_toBottomOf="@+id/main_fragment_container"
+                android:layout_marginBottom="16dp"
+                android:elevation="2dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/cart_items_list" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleImageView"
-                android:layout_width="48dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:src="@color/colorAccent"
                 android:transitionName="user_image"
@@ -68,7 +92,28 @@
 
             </de.hdodenhof.circleimageview.CircleImageView>
 
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:id="@+id/purchaseBUTTTON"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:clickable="@{vwmdl.myItems.size() == 0 ? false : true}"
+                app:strokeColor="@{vwmdl.myItems.size() == 0 ?  @color/colorOnSurface : @color/colorAccent}"
+                android:textColor="@{vwmdl.myItems.size() == 0 ?  @color/colorError : @color/colorAccent}"
+                android:text="PURCHASE" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:clickable="@{vwmdl.myItems.size() == 0 ? false : true}"
+                android:textColor="@{vwmdl.myItems.size() == 0 ?  @color/colorOnSurface : @color/colorSurface}"
+                android:text="REMOVE ALL" />
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/itemsCount"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,19 +121,27 @@
                 android:text="5"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:id="@+id/itemsCount"
                 app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
                 app:layout_constraintEnd_toEndOf="@+id/circleImageView"
                 app:layout_constraintStart_toStartOf="@+id/circleImageView"
                 app:layout_constraintTop_toTopOf="@+id/circleImageView" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/itemsSum"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:fontFamily="@font/myriadpro"
+                android:text="$1.00"
+                android:textColor="@color/colorSurface" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.90" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
 
         <com.google.android.material.appbar.AppBarLayout

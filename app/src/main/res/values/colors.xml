@@ -5,7 +5,8 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#dda33d</color>
     <color name="colorSurface">#ffffff</color>
-    <color name="colorOnSurface">#3b3b3b</color>
+    <color name="colorOnSurface">#4E4E4E</color>
     <color name="colorBackground">#f6f5ee</color>
     <color name="gradientLightGrey">#F3F3F3</color>
+    <color name="colorError">#FD0000</color>
 </resources>
