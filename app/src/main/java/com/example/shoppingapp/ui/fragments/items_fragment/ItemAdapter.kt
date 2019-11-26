@@ -6,7 +6,6 @@ import android.os.Build
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,14 +14,23 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.data.entities.Item
 import com.example.shoppingapp.databinding.ItemsListBinding
 import com.example.shoppingapp.di.activity.items_fragment.ItemsScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
+
+const val BY_PRICE_FROM_LOWEST = 1
+const val BY_PRICE_FROM_HIGHEST = 2
+const val BY_NAME = 3
+const val BY_TYPE = 4
 
 @ItemsScope
 class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHolder>(asyncDiffer) {
 
-
+    lateinit var listener: ItemListener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.MyViewHolder {
-        val binding = ItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false).also { it.listener = listener }
         return MyViewHolder(binding, currentList)
     }
 
@@ -30,8 +38,39 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
         holder.binding.item = getItem(position)
     }
 
+    suspend fun filter(direction: Int) = coroutineScope {
+        launch(Dispatchers.Default) {
 
-    class MyViewHolder(val binding: ItemsListBinding, val items: List<Item>) : RecyclerView.ViewHolder(binding.root),
+            val sorted = when (direction) {
+                BY_PRICE_FROM_HIGHEST -> {
+                    currentList.sortedByDescending { it.price }
+                }
+
+                BY_PRICE_FROM_LOWEST -> {
+                    currentList.sortedBy { it.price }
+                }
+                BY_NAME -> {
+                    currentList.sortedBy { it.title }
+                }
+
+                BY_TYPE -> {
+                    currentList.sortedBy { it.type }
+                }
+                else -> null
+            }
+            resetList(sorted)
+
+        }
+    }
+
+    suspend fun resetList(sorted: List<Item>?) {
+        withContext(Dispatchers.Main) {
+            submitList(sorted)
+        }
+    }
+
+    class MyViewHolder(val binding: ItemsListBinding, val items: List<Item>) :
+        RecyclerView.ViewHolder(binding.root),
         View.OnTouchListener, GestureDetector.OnGestureListener, View.OnDragListener {
 
         val metrics = DisplayMetrics()
@@ -57,6 +96,7 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
 
         override fun onSingleTapUp(e: MotionEvent?): Boolean {
             Log.d("ItemAdapter", "singleTapUp")
+            binding.listener?.onItemClick(binding.item!!, binding)
             return true
         }
 
@@ -86,10 +126,11 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
         }
 
         override fun onLongPress(e: MotionEvent?) {
-            val item = if(adapterPosition > 0) items[adapterPosition] else items[0]
+            val item = if (adapterPosition > 0) items[adapterPosition] else items[0]
             val builder = SmallerDragShadow(binding.itemImage)
-            val clipDataItem = ClipData.Item(item.id.toString() )
-            val clipdata = ClipData("itemID", arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN), clipDataItem )
+            val clipDataItem = ClipData.Item(item.id.toString())
+            val clipdata =
+                ClipData("itemID", arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN), clipDataItem)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 binding.mainCard.startDragAndDrop(clipdata, builder, null, 0)
             } else {
@@ -98,9 +139,10 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
             builder.view.setOnDragListener(this)
         }
 
+
         override fun onDrag(v: View?, event: DragEvent?): Boolean {
             Log.d("ItemAdapter", "DRAG")
-          return  when (event?.action) {
+            return when (event?.action) {
                 DragEvent.ACTION_DRAG_STARTED -> {
                     Log.d("ItemAdapter", "STARTED")
                     true
@@ -135,6 +177,7 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
 
     }
 }
+
 val callback = object : DiffUtil.ItemCallback<Item>() {
     override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean = oldItem.id == newItem.id
 

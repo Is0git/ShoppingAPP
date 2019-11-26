@@ -2,10 +2,9 @@ package com.example.shoppingapp.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.shoppingapp.data.entities.FlattenItem
+import com.example.shoppingapp.data.models.FlattenItem
 import com.example.shoppingapp.data.entities.Item
 import com.example.shoppingapp.data.entities.MyItems
 

@@ -7,11 +7,13 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.shoppingapp.ui.fragments.home_fragment.HomeFragment"
-        android:label="HomeFragment">
+        android:label="Home">
         <action
             android:id="@+id/action_homeFragment_to_itemsFragment"
             app:destination="@id/itemsFragment"
-            app:enterAnim="@anim/enter_anim">
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim">
             <argument
                 android:name="typeID"
                 app:argType="integer" />
@@ -20,10 +22,39 @@
     <fragment
         android:id="@+id/itemsFragment"
         android:name="com.example.shoppingapp.ui.fragments.items_fragment.ItemsFragment"
-        android:label="ItemsFragment">
+        android:label="Items">
         <argument
             android:name="typeID"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_itemsFragment_to_fullItemFragment"
+            app:destination="@id/fullItemFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit">
+            <argument
+                android:name="item"
+                android:defaultValue="@null"
+                app:argType="android.os.Parcelable"
+                app:nullable="true" />
+            <argument
+                android:name="transitionName"
+                app:argType="string" />
+        </action>
 
+    </fragment>
+    <fragment
+        android:id="@+id/fullItemFragment"
+        android:name="com.example.shoppingapp.ui.fragments.full_item_fragment.FullItemFragment"
+        android:label="FullItemFragment">
+        <argument
+            android:name="item"
+            android:defaultValue="@null"
+            app:argType="android.os.Parcelable"
+            app:nullable="true" />
+        <argument
+            android:name="transitionName"
+            app:argType="string" />
     </fragment>
 </navigation>

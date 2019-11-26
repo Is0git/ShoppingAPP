@@ -2,15 +2,20 @@ package com.example.shoppingapp.ui.fragments.home_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.shoppingapp.R
 import com.example.shoppingapp.data.models.Categories
 import com.example.shoppingapp.databinding.HomeFragmentBinding
+import com.example.shoppingapp.ui.MainActivity
 import com.example.shoppingapp.util.contracts.*
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment(), OnCategoryListener {
@@ -41,8 +46,8 @@ class HomeFragment : DaggerFragment(), OnCategoryListener {
     }
 
     fun setAdapterData() {
-        adapter.submitList(
-            listOf(
+        adapter.items =
+            mutableListOf(
                 Categories(
                     HOODIES,
                     "Hoodies",
@@ -110,10 +115,27 @@ class HomeFragment : DaggerFragment(), OnCategoryListener {
                     "ERER"
                 )
             )
-        )
     }
     override fun onCategoryClick(typeID: Int) {
         val direction = HomeFragmentDirections.actionHomeFragmentToItemsFragment(typeID)
-        navController.navigate(direction)
+        (activity!! as MainActivity).apply {
+
+            (toolbar.menu as Menu).get(0).isVisible = false
+            toolbar.collapseActionView()
+            navController.navigate(direction)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(!(activity as MainActivity).binding.toolbar.menu[0].isVisible) {
+            (activity as MainActivity).binding.toolbar.menu[0].isVisible = true
+        }
+
+        (activity!! as MainActivity).showAppBar()
+
+         val item =   (activity as MainActivity).binding.toolbar.menu.findItem(R.id.filter)
+        if(item.isVisible) item.setVisible(false)
+
     }
 }

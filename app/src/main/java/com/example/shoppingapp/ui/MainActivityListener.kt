@@ -1,6 +1,6 @@
 package com.example.shoppingapp.ui
 
-import com.example.shoppingapp.data.entities.FlattenItem
+import com.example.shoppingapp.data.models.FlattenItem
 
 interface MainActivityListener {
 

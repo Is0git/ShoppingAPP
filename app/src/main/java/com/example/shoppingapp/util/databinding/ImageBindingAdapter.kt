@@ -16,7 +16,7 @@ object ImageBindingAdapter {
     @BindingAdapter("app:loadImageFromStringURI")
     fun loadImageFromStringURI(imageView: ImageView, stringUri: String) {
         val uri = stringUri.toUri()
-        Glide.with(imageView.context).load(uri).centerCrop().into(imageView)
+        Glide.with(imageView.context).load(uri).centerInside().into(imageView)
     }
 
 }

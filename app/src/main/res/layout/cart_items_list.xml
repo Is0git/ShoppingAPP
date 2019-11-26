@@ -10,7 +10,7 @@
             type="com.example.shoppingapp.ui.MainActivityListener" />
         <variable
             name="item"
-            type="com.example.shoppingapp.data.entities.FlattenItem" />
+            type="com.example.shoppingapp.data.models.FlattenItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@{item.type, default = `TYPE`}"
-            android:textColor="@color/colorSurface"
+            android:textColor="@color/colorOnSurface"
             app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
             app:layout_constraintStart_toEndOf="@id/circleImageView"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView" />

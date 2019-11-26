@@ -1,7 +1,7 @@
 package com.example.shoppingapp.ui
 
 import com.example.shoppingapp.data.database.ShoppingDatabase
-import com.example.shoppingapp.data.entities.FlattenItem
+import com.example.shoppingapp.data.models.FlattenItem
 import com.example.shoppingapp.data.entities.Item
 import com.example.shoppingapp.data.entities.MyItems
 import com.example.shoppingapp.di.activity.ActivityScope
@@ -16,7 +16,7 @@ class MainActivityRepository @Inject constructor(val database: ShoppingDatabase)
 
     suspend fun addMyItem(id: String) = dao.myItem(MyItems(id.toInt()))
 
-    suspend fun deleteItem(item:FlattenItem) = dao.deleteItem(item.item_id)
+    suspend fun deleteItem(item: FlattenItem) = dao.deleteItem(item.item_id)
 
 
     suspend fun deleteAll() = dao.deleteItems()

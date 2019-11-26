@@ -1,4 +1,4 @@
-package com.example.shoppingapp.data.entities
+package com.example.shoppingapp.data.models
 
 import androidx.room.PrimaryKey
 

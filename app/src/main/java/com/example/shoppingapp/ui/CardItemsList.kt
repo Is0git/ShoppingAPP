@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shoppingapp.data.entities.FlattenItem
+import com.example.shoppingapp.data.models.FlattenItem
 import com.example.shoppingapp.databinding.CartItemsListBinding
 import com.example.shoppingapp.di.activity.ActivityScope
-import com.example.shoppingapp.ui.fragments.items_fragment.callback
 import javax.inject.Inject
 
 @ActivityScope

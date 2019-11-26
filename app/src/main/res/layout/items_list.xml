@@ -7,6 +7,10 @@
         <variable
             name="item"
             type="com.example.shoppingapp.data.entities.Item" />
+        <variable
+            name="listener"
+            type="com.example.shoppingapp.ui.fragments.items_fragment.ItemListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

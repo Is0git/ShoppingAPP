@@ -129,8 +129,7 @@
         <Constraint
             android:id="@+id/main_fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toTopOf="parent"
+            android:layout_height="100dp"
             motion:layout_editor_absoluteY="639dp" />
         <Constraint
             android:id="@+id/circleImageView"
@@ -158,7 +157,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="16dp"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/main_fragment_container">
             <CustomAttribute

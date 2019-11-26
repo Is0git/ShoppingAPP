@@ -1,8 +1,10 @@
 package com.example.shoppingapp.di.activity
 
+import com.example.shoppingapp.di.activity.full_item_fragment.FullItemScope
 import com.example.shoppingapp.di.activity.home_fragment.HomeFragmentScope
 import com.example.shoppingapp.di.activity.items_fragment.ItemViewModelModule
 import com.example.shoppingapp.di.activity.items_fragment.ItemsScope
+import com.example.shoppingapp.ui.fragments.full_item_fragment.FullItemFragment
 import com.example.shoppingapp.ui.fragments.home_fragment.HomeFragment
 import com.example.shoppingapp.ui.fragments.items_fragment.ItemsFragment
 import dagger.Module
@@ -18,5 +20,9 @@ abstract class FragmentBuilder {
     @ContributesAndroidInjector(modules = [ItemViewModelModule::class])
     @ItemsScope
     abstract fun getItemsFragment() : ItemsFragment
+
+    @ContributesAndroidInjector
+    @FullItemScope
+    abstract fun getFullItemFragment() : FullItemFragment
 
 }
