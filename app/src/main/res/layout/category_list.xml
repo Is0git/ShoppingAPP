@@ -32,6 +32,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:id="@+id/category_name"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_marginTop="16dp"
