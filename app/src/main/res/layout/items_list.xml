@@ -77,15 +77,15 @@
                 <TextView
                     android:id="@+id/itemDesc"
                     style="@style/TextAppearance.AppCompat.Caption"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/myriadpro"
                     android:text="@{item.title}"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/itemName"
-                    app:layout_constraintStart_toStartOf="@+id/itemName"
+                    app:layout_constraintEnd_toEndOf="@+id/itemImage"
+                    app:layout_constraintStart_toStartOf="@+id/itemImage"
                     app:layout_constraintTop_toBottomOf="@+id/itemName" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

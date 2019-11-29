@@ -37,126 +37,130 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/priceText"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:text="@{PricePlaceHolder.getPriceString(priceText, item.price)}"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/name"
+            app:layout_constraintTop_toTopOf="@+id/name"
+            app:layout_constraintVertical_bias="0.0" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/priceText"
-                        style="@style/TextAppearance.MaterialComponents.Headline4"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginEnd="24dp"
-                        android:gravity="center"
-                        android:text="@{PricePlaceHolder.getPriceString(priceText, item.price)}"
-                        android:textColor="@color/colorAccent"
-                        app:layout_constraintBottom_toBottomOf="@+id/name"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/name"
-                        app:layout_constraintTop_toTopOf="@+id/name"
-                        app:layout_constraintVertical_bias="0.0" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/name"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/myriadpro"
+            android:text="@{item.title}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/priceText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/name"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="32dp"
-                        android:fontFamily="@font/myriadpro"
-                        android:text="@{item.title}"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/priceText"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/type_text"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/myriadpro"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:text="@{item.type}"
+            app:layout_constraintEnd_toEndOf="@+id/priceText"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/type_text"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/myriadpro"
-                        android:textStyle="bold"
-                        android:singleLine="true"
-                        android:text="@{item.type}"
-                        app:layout_constraintEnd_toEndOf="@+id/priceText"
-                        app:layout_constraintStart_toStartOf="@+id/name"
-                        app:layout_constraintTop_toBottomOf="@+id/name" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/descriptionText"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/myriadpro"
+            android:singleLine="true"
+            android:text="Description"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/type_text"
+            app:layout_constraintStart_toStartOf="@+id/type_text"
+            app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/descriptionText"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/myriadpro"
-                        android:singleLine="true"
-                        android:text="Description"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/type_text"
-                        app:layout_constraintStart_toStartOf="@+id/type_text"
-                        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/descriptionText"
+            app:layout_constraintEnd_toStartOf="@+id/addItem"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionText"
+            app:layout_constraintVertical_bias="1.0">
 
-                    <ScrollView
-                        android:id="@+id/scrollView"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/descriptionText"
-                        app:layout_constraintEnd_toStartOf="@+id/addItem"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/descriptionText">
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/myriadpro"
+                android:text="@string/test"
+                android:textColor="@color/colorOnSurface" />
+        </androidx.core.widget.NestedScrollView>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            style="@style/TextAppearance.MaterialComponents.Caption"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/myriadpro"
-                            android:text="@string/test"
-                            android:textColor="@color/colorOnSurface" />
-                    </ScrollView>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/addItem"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="32dp"
-                        app:icon="@drawable/cart_icon"
-                        android:text="ADD ITEM"
-                        app:iconTint="@color/colorAccent"
-                        app:iconSize="20dp"
-                        android:textColor="@color/colorAccent"
-                        app:strokeColor="@color/colorAccent"
-                        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/scrollView"
-                        app:layout_constraintTop_toTopOf="@+id/descriptionText" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addItem"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:text="ADD ITEM"
+            android:textColor="@color/colorAccent"
+            app:icon="@drawable/cart_icon"
+            app:iconSize="20dp"
+            app:iconTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/scrollView"
+            app:layout_constraintTop_toTopOf="@+id/descriptionText"
+            app:strokeColor="@color/colorAccent" />
 
 
-                    <ImageView
-                        android:id="@+id/itemImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"
-                        android:layout_marginTop="32dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:loadImageFromStringURI="@{item.imageUri}"
-                        app:layout_constraintHorizontal_bias="0.6"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/type_text" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:loadImageFromStringURI="@{item.imageUri}"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/type_text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
 
             </com.google.android.material.card.MaterialCardView>
         </com.google.android.material.card.MaterialCardView>

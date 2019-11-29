@@ -28,29 +28,35 @@
             android:src="@color/colorSurface"
             app:civ_border_color="@color/colorSurface"
             app:civ_border_width="2dp"
+            app:layout_constraintEnd_toStartOf="@+id/titleTextView"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:loadImageFromStringURI="@{item.imageUri}" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/titleTextView"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:layout_marginStart="16dp"
             android:text="@{item.title, default = `TITLE`}"
             android:textColor="@color/colorSurface"
-            app:layout_constraintStart_toEndOf="@id/circleImageView"
+            app:layout_constraintEnd_toStartOf="@+id/priceText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toTopOf="@+id/circleImageView" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/typeTextView"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:singleLine="true"
             android:text="@{item.type, default = `TYPE`}"
             android:textColor="@color/colorOnSurface"
             app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-            app:layout_constraintStart_toEndOf="@id/circleImageView"
+            app:layout_constraintEnd_toEndOf="@+id/titleTextView"
+            app:layout_constraintStart_toStartOf="@+id/titleTextView"
             app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -60,19 +66,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:singleLine="true"
-            android:text="@{PricePlaceHolder.getPriceString(priceText, item.price)}"
+            android:text="@{PricePlaceHolder.getPriceString(priceText, item.price), default = `DEFAULT`}"
             android:textColor="@color/colorOnSurface"
             app:layout_constraintBottom_toBottomOf="@+id/typeTextView"
-            app:layout_constraintStart_toEndOf="@id/typeTextView"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/titleTextView"
             app:layout_constraintTop_toTopOf="@+id/titleTextView" />
 
         <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_marginEnd="12dp"
             android:background="@drawable/cancel"
             android:onClick="@{() -> listener.deleteItemOnClick(item)}"
             app:layout_constraintBottom_toBottomOf="@+id/priceText"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/priceText"
             app:layout_constraintTop_toTopOf="@+id/priceText" />
 

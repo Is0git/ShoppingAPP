@@ -10,6 +10,9 @@ import javax.inject.Inject
 @ActivityScope
 class MainActivityViewModel @Inject constructor(val repo: MainActivityRepository) : ViewModel() {
 
+    init {
+        viewModelScope.launch { repo.addMocks() }
+    }
     var myItems = repo.getMyItems()
 
     fun addMyItem(id: String) = viewModelScope.launch {
