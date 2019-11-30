@@ -31,4 +31,10 @@ interface ShoppingDao {
 
     @Query("DELETE FROM MY_ITEMS WHERE item_id == :id")
     suspend fun deleteItem(id: Int)
+
+    @Query("SELECT * FROM item_table")
+    fun getAllItems() : List<Item>
+
+    @Query("SELECT * FROM my_items")
+    fun getMyAllItems() : List<MyItems>
 }
