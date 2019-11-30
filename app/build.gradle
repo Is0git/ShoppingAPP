@@ -97,6 +97,8 @@ dependencies {
 
     androidTestImplementation "android.arch.core:core-testing:$lifecycle_version"
 
+    testCompile "org.robolectric:robolectric:4.2.1"
+
 
 
 
