@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.example.shoppingapp.util.databinding.PricePlaceHolder"/>
+
+        <import type="com.example.shoppingapp.util.databinding.PricePlaceHolder" />
+
         <variable
             name="listener"
             type="com.example.shoppingapp.ui.MainActivityListener" />
+
         <variable
             name="item"
             type="com.example.shoppingapp.data.models.FlattenItem" />

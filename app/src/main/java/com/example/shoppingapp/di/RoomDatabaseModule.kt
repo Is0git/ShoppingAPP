@@ -2,7 +2,6 @@ package com.example.shoppingapp.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.shoppingapp.data.database.ShoppingDatabase
 import dagger.Module
 import dagger.Provides
@@ -14,6 +13,10 @@ object RoomDatabaseModule {
     @JvmStatic
     @Provides
     @Singleton
-    fun getDatabase(application: Application) : ShoppingDatabase = Room.databaseBuilder(application, ShoppingDatabase::class.java, "shopping_database").fallbackToDestructiveMigration().build()
+    fun getDatabase(application: Application): ShoppingDatabase = Room.databaseBuilder(
+        application,
+        ShoppingDatabase::class.java,
+        "shopping_database"
+    ).fallbackToDestructiveMigration().build()
 
 }

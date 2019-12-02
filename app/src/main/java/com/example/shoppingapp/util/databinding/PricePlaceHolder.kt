@@ -18,7 +18,7 @@ object PricePlaceHolder {
             var doubleResult: Double = 0.0
             val result = prices.forEach { doubleResult += it!! }
             val stringResult = text.context.getString(R.string.price, doubleResult)
-            launch(Dispatchers.Main) {  text.text = stringResult}
+            launch(Dispatchers.Main) { text.text = stringResult }
 
         }
     }

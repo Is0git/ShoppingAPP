@@ -116,6 +116,7 @@ class HomeFragment : DaggerFragment(), OnCategoryListener {
                 )
             )
     }
+
     override fun onCategoryClick(typeID: Int) {
         val direction = HomeFragmentDirections.actionHomeFragmentToItemsFragment(typeID)
         (activity!! as MainActivity).apply {
@@ -128,14 +129,14 @@ class HomeFragment : DaggerFragment(), OnCategoryListener {
 
     override fun onStart() {
         super.onStart()
-        if(!(activity as MainActivity).binding.toolbar.menu[0].isVisible) {
+        if (!(activity as MainActivity).binding.toolbar.menu[0].isVisible) {
             (activity as MainActivity).binding.toolbar.menu[0].isVisible = true
         }
 
         (activity!! as MainActivity).showAppBar()
 
-         val item =   (activity as MainActivity).binding.toolbar.menu.findItem(R.id.filter)
-        if(item.isVisible) item.setVisible(false)
+        val item = (activity as MainActivity).binding.toolbar.menu.findItem(R.id.filter)
+        if (item.isVisible) item.setVisible(false)
 
     }
 }

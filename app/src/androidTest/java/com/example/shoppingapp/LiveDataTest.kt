@@ -5,7 +5,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.shoppingapp.data.dao.ShoppingDao
 import com.example.shoppingapp.data.database.ShoppingDatabase
 import com.example.shoppingapp.data.entities.MyItems
@@ -15,9 +14,7 @@ import com.example.shoppingapp.ui.MainActivityViewModel
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.runner.RunWith
-import org.mockito.Captor
 import org.mockito.Mockito
-import org.mockito.Mockito.mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)

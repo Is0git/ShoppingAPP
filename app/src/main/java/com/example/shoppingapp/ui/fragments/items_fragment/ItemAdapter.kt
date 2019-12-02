@@ -30,7 +30,8 @@ class ItemAdapter @Inject constructor() : ListAdapter<Item, ItemAdapter.MyViewHo
 
     lateinit var listener: ItemListener
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.MyViewHolder {
-        val binding = ItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false).also { it.listener = listener }
+        val binding = ItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            .also { it.listener = listener }
         return MyViewHolder(binding, currentList)
     }
 

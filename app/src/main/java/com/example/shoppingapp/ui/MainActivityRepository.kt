@@ -1,9 +1,9 @@
 package com.example.shoppingapp.ui
 
 import com.example.shoppingapp.data.database.ShoppingDatabase
-import com.example.shoppingapp.data.models.FlattenItem
 import com.example.shoppingapp.data.entities.Item
 import com.example.shoppingapp.data.entities.MyItems
+import com.example.shoppingapp.data.models.FlattenItem
 import com.example.shoppingapp.di.activity.ActivityScope
 import javax.inject.Inject
 

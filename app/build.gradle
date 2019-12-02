@@ -104,8 +104,5 @@ dependencies {
     testCompile "org.robolectric:robolectric:4.2.1"
 
 
-
-
-
 }
 

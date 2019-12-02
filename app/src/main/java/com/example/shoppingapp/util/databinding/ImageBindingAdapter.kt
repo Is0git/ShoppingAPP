@@ -12,6 +12,7 @@ object ImageBindingAdapter {
     fun loadImageFromUri(imageView: ImageView, uri: Uri) {
         Glide.with(imageView.context).load(uri).centerCrop().into(imageView)
     }
+
     @JvmStatic
     @BindingAdapter("app:loadImageFromStringURI")
     fun loadImageFromStringURI(imageView: ImageView, stringUri: String) {

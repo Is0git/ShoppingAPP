@@ -13,14 +13,18 @@ import com.example.shoppingapp.di.activity.ActivityScope
 import javax.inject.Inject
 
 @ActivityScope
-class CardItemsList @Inject constructor() : ListAdapter<FlattenItem, CardItemsList.MyViewHolder>(asyncDifferConfig) {
-    lateinit var listener:MainActivityListener
+class CardItemsList @Inject constructor() :
+    ListAdapter<FlattenItem, CardItemsList.MyViewHolder>(asyncDifferConfig) {
+    lateinit var listener: MainActivityListener
+
     class MyViewHolder(val binding: CartItemsListBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = CartItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false).also { it.listener = listener }
+        val binding =
+            CartItemsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                .also { it.listener = listener }
         return MyViewHolder(binding)
 
     }
@@ -30,9 +34,12 @@ class CardItemsList @Inject constructor() : ListAdapter<FlattenItem, CardItemsLi
     }
 }
 
-val diffCallback = object  : DiffUtil.ItemCallback<FlattenItem>() {
-    override fun areItemsTheSame(oldItem: FlattenItem, newItem: FlattenItem): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: FlattenItem, newItem: FlattenItem): Boolean = oldItem == newItem
+val diffCallback = object : DiffUtil.ItemCallback<FlattenItem>() {
+    override fun areItemsTheSame(oldItem: FlattenItem, newItem: FlattenItem): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: FlattenItem, newItem: FlattenItem): Boolean =
+        oldItem == newItem
 
 }
 

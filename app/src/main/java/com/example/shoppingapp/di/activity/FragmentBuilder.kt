@@ -15,14 +15,14 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector
     @HomeFragmentScope
-    abstract fun getHomeFragment() : HomeFragment
+    abstract fun getHomeFragment(): HomeFragment
 
     @ContributesAndroidInjector(modules = [ItemViewModelModule::class])
     @ItemsScope
-    abstract fun getItemsFragment() : ItemsFragment
+    abstract fun getItemsFragment(): ItemsFragment
 
     @ContributesAndroidInjector
     @FullItemScope
-    abstract fun getFullItemFragment() : FullItemFragment
+    abstract fun getFullItemFragment(): FullItemFragment
 
 }

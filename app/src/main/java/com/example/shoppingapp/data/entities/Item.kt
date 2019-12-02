@@ -14,5 +14,5 @@ data class Item(
     val price: Double?,
     val imageUri: String?,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
-) : Parcelable{
+) : Parcelable {
 }

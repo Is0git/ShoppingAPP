@@ -9,5 +9,5 @@ import com.example.shoppingapp.data.entities.MyItems
 @Database(entities = [MyItems::class, Item::class], exportSchema = false, version = 1)
 abstract class ShoppingDatabase : RoomDatabase() {
 
-    abstract fun shoppingDao() : ShoppingDao
+    abstract fun shoppingDao(): ShoppingDao
 }

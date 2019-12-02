@@ -3,10 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.example.shoppingapp.util.databinding.PricePlaceHolder"/>
+
+        <import type="com.example.shoppingapp.util.databinding.PricePlaceHolder" />
+
         <variable
             name="item"
             type="com.example.shoppingapp.data.entities.Item" />
+
         <variable
             name="listener"
             type="com.example.shoppingapp.ui.fragments.items_fragment.ItemListener" />

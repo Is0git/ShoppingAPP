@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class ItemViewModelModule  {
+abstract class ItemViewModelModule {
     @Binds
     @IntoMap
     @ItemsScope

@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         tools:background="@color/colorPrimary"
@@ -15,6 +16,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/guideline"
             app:cardBackgroundColor="@color/colorBackground">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/itemRecyclerView"
                 android:layout_width="match_parent"
@@ -24,7 +26,7 @@
                 android:layout_marginTop="40dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.Guideline

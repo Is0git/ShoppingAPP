@@ -5,7 +5,6 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -49,6 +48,7 @@ class FullItemFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
     }
+
     override fun onStart() {
         super.onStart()
         (activity!! as MainActivity).hideAppBar()
