@@ -3,7 +3,7 @@
 
 
 
-<p>Simple shopping app using MVVM architecture, android dagger and jetpack architecture components, material design(somewhat)</p>
+<p>Simple shopping app using MVVM architecture, android dagger and jetpack architecture components, material design</p>
 <h1><a href='https://streamable.com/3firm' target='_blank'>DEMO</a></h1>
 
 
