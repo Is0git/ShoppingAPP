@@ -3,8 +3,8 @@
 
 
 
-<p>Simple shopping app using MVVM architecture, android dagger and jetpack architecture components, material design</p>
-<h1><a href='https://streamable.com/3firm' target='_blank'>DEMO</a></h1>
+<p>Application which made to shop stuff online. The main purpose was to simplify online purchasing using dragging gestures</p>
+<h1><a href='http://danielktx.com/images/shopping/video/demo.mp4' target='_blank'>DEMO VIDEO</a></h1>
 
 
 <h2><strong>Essential libraries I used:</h2>
