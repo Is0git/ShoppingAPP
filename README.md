@@ -3,7 +3,7 @@
 
 
 
-<p>Application which made to shop stuff online. The main purpose was to simplify online purchasing using dragging gestures</p>
+<p>An application that is made to shop stuff online. The main purpose was to simplify online purchasing using dragging gestures.  (MVVM + Dagger + Architecture components)</p>
 <h1><a href='http://danielktx.com/images/shopping/video/demo.mp4' target='_blank'>DEMO VIDEO</a></h1>
 
 
