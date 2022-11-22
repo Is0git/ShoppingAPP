@@ -1,5 +1,5 @@
 # ShoppingAPP
-<img class='header-img' src='https://user-images.githubusercontent.com/52918920/203334973-3751ff64-eb0a-444c-94e1-1b2bd0333ee1.png' height = "800" />
+<img class='header-img' src='https://user-images.githubusercontent.com/52918920/203334973-3751ff64-eb0a-444c-94e1-1b2bd0333ee1.png' width = 100% />
 
 <p>An application that is made to shop stuff online. The main purpose was to simplify online purchasing using dragging gestures.  (MVVM + Dagger + Architecture components)</p>
 <h1><a href='http://danielktx.com/images/shopping/video/demo.mp4' target='_blank'>DEMO VIDEO</a></h1>
